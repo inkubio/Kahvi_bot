@@ -19,7 +19,7 @@ def start(bot, update):
     bot.send_message(chat_id=chat_id, text="En tieda onko kahvi")
     
 def main():
-    updater = Updater(token='740252702:AAGwf5qeXBrO4TGwjBj1aBxD5aGYqVGQyr4')
+    updater = Updater(token='token')
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
     dispatcher.add_handler(start_handler)
