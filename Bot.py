@@ -5,7 +5,7 @@ Created on 22.2.2019
 '''
 from telegram.ext import Updater, CommandHandler
 import logging
-from cv2 import VideoCapture, imwrite
+from cv2 import VideoCapture
 from PIL import Image
 from io import BytesIO
 
