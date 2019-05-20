@@ -8,14 +8,15 @@ import logging
 from cv2 import VideoCapture, imwrite
 from PIL import Image
 from io import BytesIO
+
 '''
-Bot is for taking pictures of the coffee machine at Inkubio guildroom and sending them to tg.
+Bot for taking pictures of the coffee machine at Inkubio guildroom and sending them to tg.
 '''
 
 '''
 #Code for disasters
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+                     level=logging.DEBUG)
 '''
 
 def kahvi_stalk(bot, update):
@@ -24,16 +25,14 @@ def kahvi_stalk(bot, update):
     '''
     camera = VideoCapture(0)
     return_value, image = camera.read()
-    imwrite('opencv'+str("spagu")+'.png', image)
     camera.release()
-
-    image = Image.open('opencvspagu.png')
-   
-    chat_id = update.message.chat_id
     
+    image = Image.fromarray(image)  
+
+    chat_id = update.message.chat_id
     bio = BytesIO()
-    bio.name = 'opencvspagu.png'
-    image.save(bio, 'PNG')
+    bio.name = 'image.jpeg'
+    image = image.save(bio,'JPEG')
     bio.seek(0)
     bot.send_photo(chat_id, photo=bio)
     
