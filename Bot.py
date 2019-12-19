@@ -28,6 +28,11 @@ def kahvi_stalk(bot, update):
     camera.release()
     
     image = Image.fromarray(image)  
+    overlay = Image.open("cgi.png")
+    overlay = overlay.resize((overlay.width // 2, overlay.height // 2))
+    offset = 20
+    image.paste(overlay, (offset, image.height - overlay.height - offset), overlay)
+
 
     chat_id = update.message.chat_id
     bio = BytesIO()
